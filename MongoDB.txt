@@ -1,0 +1,191 @@
+Microsoft Windows [Version 10.0.26200.8039]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\alish>mongosh
+Current Mongosh Log ID: 69c09e780b73cfbd62114029
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.8.1
+MongoNetworkError: connect ECONNREFUSED 127.0.0.1:27017
+
+C:\Users\alish>mongosh "mongodb+srv://cluster0.3veygwr.mongodb.net/" --apiVersion 1 --username alishashakya_db_user
+Enter password: ****************
+Current Mongosh Log ID: 69c0a1024bd6128d86114029
+Connecting to:          mongodb+srv://<credentials>@cluster0.3veygwr.mongodb.net/?appName=mongosh+2.8.1
+Using MongoDB:          8.0.20 (API Version 1)
+Using Mongosh:          2.8.1
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+Atlas atlas-wl8vl4-shard-0 [primary] test> show dbs
+pcps            8.00 KiB
+sample_mflix  128.18 MiB
+admin         356.00 KiB
+local           7.13 GiB
+Atlas atlas-wl8vl4-shard-0 [primary] test> use test
+already on db test
+Atlas atlas-wl8vl4-shard-0 [primary] test> db.students.insertMany([{ name : "Alisha", age:18, grade: "A"}])
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('69c0a4f04bd6128d8611402a') }
+}
+Atlas atlas-wl8vl4-shard-0 [primary] test> db.students.find().pretty
+[Function: pretty] {
+  returnType: 'this',
+  serverVersions: [ '0.0.0', '999.999.999' ],
+  apiVersions: [ 0, Infinity ],
+  topologies: [ 'ReplSet', 'Standalone', 'Sharded', 'LoadBalanced' ],
+  returnsPromise: false,
+  deprecated: false,
+  platforms: [ 'Compass', 'Browser', 'CLI' ],
+  isDirectShellCommand: false,
+  acceptsRawInput: false,
+  shellCommandCompleter: undefined,
+  newShellCommandCompleter: undefined,
+  help: [Function (anonymous)] Help
+}
+Atlas atlas-wl8vl4-shard-0 [primary] test>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+Atlas atlas-wl8vl4-shard-0 [primary] test>  db.students.find().pretty()
+[
+  {
+    _id: ObjectId('69c0a4f04bd6128d8611402a'),
+    name: 'Alisha',
+    age: 18,
+    grade: 'A'
+  }
+]
+Atlas atlas-wl8vl4-shard-0 [primary] test>  db.students.find({age: {$gt:20}}).pretty()
+
+Atlas atlas-wl8vl4-shard-0 [primary] test>  db.students.find({grade: "A"}).pretty()
+[
+  {
+    _id: ObjectId('69c0a4f04bd6128d8611402a'),
+    name: 'Alisha',
+    age: 18,
+    grade: 'A'
+  }
+]
+Atlas atlas-wl8vl4-shard-0 [primary] test>  db.students.find({name:"Alisha"}).pretty()
+[
+  {
+    _id: ObjectId('69c0a4f04bd6128d8611402a'),
+    name: 'Alisha',
+    age: 18,
+    grade: 'A'
+  }
+]
+Atlas atlas-wl8vl4-shard-0 [primary] test>  db.students.updateOne({name:"Alisha"}, {$set : {grade: "g"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-wl8vl4-shard-0 [primary] test>  db.students.deleteOne({name: "Alisha"})
+{ acknowledged: true, deletedCount: 1 }
+Atlas atlas-wl8vl4-shard-0 [primary] test>  db.students.find().pretty
+[Function: pretty] {
+  returnType: 'this',
+  serverVersions: [ '0.0.0', '999.999.999' ],
+  apiVersions: [ 0, Infinity ],
+  topologies: [ 'ReplSet', 'Standalone', 'Sharded', 'LoadBalanced' ],
+  returnsPromise: false,
+  deprecated: false,
+  platforms: [ 'Compass', 'Browser', 'CLI' ],
+  isDirectShellCommand: false,
+  acceptsRawInput: false,
+  shellCommandCompleter: undefined,
+  newShellCommandCompleter: undefined,
+  help: [Function (anonymous)] Help
+}
+Atlas atlas-wl8vl4-shard-0 [primary] test>  db.students.find().pretty()
+
+Atlas atlas-wl8vl4-shard-0 [primary] test>  db.students.insertMany([{ name : "Alisha", age:18, grade : "A"}])
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('69c0a90d4bd6128d8611402b') }
+}
+Atlas atlas-wl8vl4-shard-0 [primary] test>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+Atlas atlas-wl8vl4-shard-0 [primary] test> db.students.insertMany([{ name : "Bini", age:20, grade " "B"}])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:55)
+
+> 1 | db.students.insertMany([{ name : "Bini", age:20, grade " "B"}])
+    |                                                        ^
+  2 |
+
+Atlas atlas-wl8vl4-shard-0 [primary] test>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+Atlas atlas-wl8vl4-shard-0 [primary] test>
+
+C:\Users\alish> db.students.insertMany([{ name : "Bini", age:20, grade : "B"}])
+'db.students.insertMany' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\alish> db.students.countDocuments()
+'db.students.countDocuments' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\alish>mongosh
+Current Mongosh Log ID: 69c0a9ca12cad63263114029
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.8.1
+MongoNetworkError: connect ECONNREFUSED 127.0.0.1:27017
+
+C:\Users\alish>mongosh "mongodb+srv://cluster0.3veygwr.mongodb.net/" --apiVersion 1 --username alishashakya_db_user
+Enter password: ****************
+Current Mongosh Log ID: 69c0a9f360cd6c25a7114029
+Connecting to:          mongodb+srv://<credentials>@cluster0.3veygwr.mongodb.net/?appName=mongosh+2.8.1
+Using MongoDB:          8.0.20 (API Version 1)
+Using Mongosh:          2.8.1
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+Atlas atlas-wl8vl4-shard-0 [primary] test> show dbs
+pcps            8.00 KiB
+sample_mflix  128.18 MiB
+test           72.00 KiB
+admin         356.00 KiB
+local           7.13 GiB
+Atlas atlas-wl8vl4-shard-0 [primary] test>  use test
+already on db test
+Atlas atlas-wl8vl4-shard-0 [primary] test> db.students.insertMany([{ name : "Alisha", age:18, grade: "A"}])
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('69c0aa3a60cd6c25a711402a') }
+}
+Atlas atlas-wl8vl4-shard-0 [primary] test> db.students.find().pretty
+[Function: pretty] {
+  returnType: 'this',
+  serverVersions: [ '0.0.0', '999.999.999' ],
+  apiVersions: [ 0, Infinity ],
+  topologies: [ 'ReplSet', 'Standalone', 'Sharded', 'LoadBalanced' ],
+  returnsPromise: false,
+  deprecated: false,
+  platforms: [ 'Compass', 'Browser', 'CLI' ],
+  isDirectShellCommand: false,
+  acceptsRawInput: false,
+  shellCommandCompleter: undefined,
+  newShellCommandCompleter: undefined,
+  help: [Function (anonymous)] Help
+}
+Atlas atlas-wl8vl4-shard-0 [primary] test> db.students.find().pretty()
+[
+  {
+    _id: ObjectId('69c0a90d4bd6128d8611402b'),
+    name: 'Alisha',
+    age: 18,
+    grade: 'A'
+  },
+  {
+    _id: ObjectId('69c0aa3a60cd6c25a711402a'),
+    name: 'Alisha',
+    age: 18,
+    grade: 'A'
+  }
+]
+Atlas atlas-wl8vl4-shard-0 [primary] test>
